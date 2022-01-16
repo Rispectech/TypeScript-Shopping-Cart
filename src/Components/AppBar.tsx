@@ -7,22 +7,26 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
 import { useAppContext } from '../context'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  adjust: {
+    display: 'flex',
+    color: 'white',
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
   },
 }))
 
@@ -32,23 +36,27 @@ export const ShopAppBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.container}>
         <Toolbar>
           <Typography variant='h6' className={classes.title}>
             Shopping Cart
           </Typography>
-          <div className={classes.sectionDesktop}>
-            <IconButton
-              aria-label='show 4 new mails'
-              color='inherit'
+          {/* <div>
+            <Button
               onClick={() => value?.openCart()}
+              className={classes.adjust}
             >
               <Badge badgeContent={value?.state.TotalItem} color='secondary'>
-                <ShoppingCartIcon />
+                <ShoppingCartIcon className={classes.adjust} />
               </Badge>
-            </IconButton>
-          </div>
+            </Button>
+          </div> */}
         </Toolbar>
+        <Button onClick={() => value?.openCart()} className={classes.adjust}>
+          <Badge badgeContent={value?.state.TotalItem} color='secondary'>
+            <ShoppingCartIcon />
+          </Badge>
+        </Button>
       </AppBar>
     </div>
   )
