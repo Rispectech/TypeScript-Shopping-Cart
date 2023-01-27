@@ -1,8 +1,7 @@
-import { makeStyles } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
-import { lightBlue } from '@material-ui/core/colors'
-import { BorderBottom } from '@material-ui/icons'
-import { useAppContext } from '../context'
+import { makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import { lightBlue } from "@material-ui/core/colors";
+import { useAppContext } from "../context";
 // Types
 
 // Styles
@@ -32,8 +31,8 @@ import { useAppContext } from '../context'
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
     BorderBottom: 1,
     BorderBottomColor: lightBlue,
     paddingBottom: 20,
@@ -42,20 +41,20 @@ const useStyles = makeStyles({
     flex: 1,
   },
   information: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
     paddingTop: 20,
     paddingBottom: 20,
   },
   img: {
     maxWidth: 80,
-    objectFit: 'cover',
+    objectFit: "cover",
     marginLeft: 40,
   },
-})
+});
 const CartItem = (item: cartPayload) => {
-  const value = useAppContext()
-  const classes = useStyles()
+  const value = useAppContext();
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <div className={classes.container}>
@@ -66,18 +65,18 @@ const CartItem = (item: cartPayload) => {
         </div>
         <div className={classes.information}>
           <Button
-            size='small'
+            size="small"
             disableElevation
-            variant='contained'
+            variant="contained"
             onClick={() => value?.Decrease(item.id)}
           >
             -
           </Button>
           <p>{item.quantity}</p>
           <Button
-            size='small'
+            size="small"
             disableElevation
-            variant='contained'
+            variant="contained"
             onClick={() => value?.Increase(item.id)}
           >
             +
@@ -86,7 +85,7 @@ const CartItem = (item: cartPayload) => {
       </div>
       <img src={item.image} alt={item.title} className={classes.img} />
     </div>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;

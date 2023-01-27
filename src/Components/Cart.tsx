@@ -1,6 +1,6 @@
-import { Box, makeStyles } from '@material-ui/core'
-import { useAppContext } from '../context'
-import CartItem from './CartItem'
+import { Box, makeStyles } from "@material-ui/core";
+import { useAppContext } from "../context";
+import CartItem from "./CartItem";
 
 const useStyles = makeStyles({
   root: {
@@ -15,18 +15,12 @@ const useStyles = makeStyles({
   bottom: {
     paddingBottom: 10,
   },
-})
-
-type Props = {
-  cartItems: CartItemType[]
-  addToCart: (clickedItem: CartItemType) => void
-  removeFromCart: (id: number) => void
-}
+});
 
 const Cart = () => {
-  const value = useAppContext()
-  const classes = useStyles()
-  console.log(value?.cart)
+  const value = useAppContext();
+  const classes = useStyles();
+  console.log(value?.cart);
   return (
     <aside className={classes.root}>
       <h2 className={classes.bottom}>Your Shopping Cart</h2>
@@ -35,7 +29,7 @@ const Cart = () => {
       ) : null}
       {value?.state?.cartItem.map((item) => (
         <Box
-          borderColor='primary.light'
+          borderColor="primary.light"
           borderBottom={1}
           marginTop={2}
           marginBottom={2}
@@ -44,11 +38,9 @@ const Cart = () => {
           <CartItem key={item.id} {...item} />
         </Box>
       ))}
-      <h2 className={classes.padding}>
-        Total: $ {value?.state.TotalAmount.toFixed(2)}
-      </h2>
+      <h2 className={classes.padding}>Total: $ {value?.state.TotalAmount.toFixed(2)}</h2>
     </aside>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
